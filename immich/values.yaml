@@ -10,6 +10,8 @@ immich:
   env:
     DB_PASSWORD: "{{ .Values.postgresql.global.postgresql.auth.existingSecret }}"
   postgresql:
+    image:
+      debug: true
     enabled: true
     global:
       storageClass: mayastor
