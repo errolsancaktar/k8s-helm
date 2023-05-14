@@ -13,6 +13,11 @@ immich:
     enabled: true
     global:
       storageClass: mayastor
+    primary:
+      tolerations:
+        - effect: NoSchedule
+          key: nvidia.com/gpu
+          operator: Exists
   redis:
     enabled: true
 
