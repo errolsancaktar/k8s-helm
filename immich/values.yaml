@@ -11,6 +11,8 @@ immich:
 
   postgresql:
     enabled: true
+    global:
+      storageClass: mayastor
   redis:
     enabled: true
 
