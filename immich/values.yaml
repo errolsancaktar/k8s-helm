@@ -27,7 +27,7 @@ immich:
         type: pvc
         storageClass: mayastor
 
-
+  proxy:
     ingress:
       main:
         enabled: true
