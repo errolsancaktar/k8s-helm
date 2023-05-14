@@ -12,8 +12,11 @@ immich:
   postgresql:
     image:
       debug: true
-    postgresqlExtendedConf:
-      hugePages: off
+    primary:
+      resources:
+        limits:
+          hugepages-2Mi: 100Mi
+          hugepages-1Gi: 2Gi
     enabled: true
     global:
       storageClass: mayastor
