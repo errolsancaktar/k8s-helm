@@ -22,6 +22,10 @@ immich:
         - configMap:
             name: pg-sample-config
           name:  pg-sample-config
+      tolerations:
+        - effect: NoSchedule
+          key: nvidia.com/gpu
+          operator: Exists
     global:
       storageClass: mayastor
       postgresql:
@@ -30,11 +34,7 @@ immich:
           secretKeys:
             adminPasswordKey: postgres-password
             userPasswordKey: password
-    primary:
-      tolerations:
-        - effect: NoSchedule
-          key: nvidia.com/gpu
-          operator: Exists
+      
   redis:
     enabled: true
 
