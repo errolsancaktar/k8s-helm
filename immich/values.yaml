@@ -8,11 +8,7 @@ immich:
         # You have to specify an existing PVC to use
         existingClaim: immich-pvc-claim
   env:
-    - name: "DB_PASSWORD"
-              valueFrom:
-                secretKeyRef:
-                  key:  password
-                  name: immich-postgresql
+    DB_PASSWORD: "{{ .Values.postgresql.global.postgresql.auth.existingSecret }}"
   postgresql:
     enabled: true
     global:
@@ -20,6 +16,9 @@ immich:
       postgresql:
         auth:
           existingSecret: immich-postgresql
+          secretKeys:
+            adminPasswordKey: postgres-password
+            userPasswordKey: password
     primary:
       tolerations:
         - effect: NoSchedule
