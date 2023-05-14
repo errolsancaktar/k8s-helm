@@ -13,13 +13,14 @@ immich:
     image:
       debug: true
     primary:
-      initContainers:
-        - name: disable-thp
-          image: busybox
-          volumeMounts:
-            - name: host-sys
-              mountPath: /host-sys
-          command: ["sh", "-c", "echo never >/host-sys/kernel/mm/transparent_hugepage/enabled"]
+      extraVolumeMounts:
+        - name: pg-sample-config
+          mountPath: /opt/bitnami/postgresql/share/postgresql.conf.sample
+          subPath: postgresql.conf.sample
+      extraVolumes:
+        - configMap:
+            name: pg-sample-config
+          name:  pg-sample-config
 
     global:
       storageClass: mayastor
