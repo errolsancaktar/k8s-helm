@@ -33,7 +33,7 @@ immich:
         enabled: true
         annotations:
           nginx.ingress.kubernetes.io/proxy-body-size: "0"
-          kubernetes.io/ingress.class: nginx
+          kubernetes.io/ingress.class: "nginx"
         hosts:
           - host: photos.sancaktar.net
             paths:
