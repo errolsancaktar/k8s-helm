@@ -7,8 +7,8 @@ immich:
         # Automatically creating the library volume is not supported by this chart
         # You have to specify an existing PVC to use
         existingClaim: immich-pvc-claim
-  env:
-    DB_PASSWORD: "{{ .Values.postgresql.global.postgresql.auth.existingSecret }}"
+  # env:
+  #   DB_PASSWORD: "{{ .Values.postgresql.global.postgresql.auth.existingSecret }}"
   postgresql:
     enabled: true
     image:
