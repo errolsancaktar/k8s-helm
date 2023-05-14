@@ -10,6 +10,7 @@ immich:
   env:
     DB_PASSWORD: "{{ .Values.postgresql.global.postgresql.auth.existingSecret }}"
   postgresql:
+    enabled: true
     image:
       debug: true
     primary:
@@ -21,7 +22,6 @@ immich:
         - configMap:
             name: pg-sample-config
           name:  pg-sample-config
-
     global:
       storageClass: mayastor
       postgresql:
