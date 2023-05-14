@@ -12,6 +12,8 @@ immich:
   postgresql:
     image:
       debug: true
+    postgresqlExtendedConf:
+      huge_pages: "off"
     enabled: true
     global:
       storageClass: mayastor
