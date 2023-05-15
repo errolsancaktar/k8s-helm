@@ -22,7 +22,7 @@ spec:
         volumeMounts:
         - mountPath: /data
           name: {{ .Values.appName }}-volume
-      env:
+        env:
         - name: DBTYPE
           value: sqlite
         - name: DBNAME
