@@ -8,5 +8,5 @@ ingressClass: nginx
 igressHostName: tasmota.sancaktar.net
 namespace: default
 image:
-  name: danmed/tasmobackupv1
+  name: ghcr.io/errolsancaktar/tasmobackup:latest
   tag: latest
