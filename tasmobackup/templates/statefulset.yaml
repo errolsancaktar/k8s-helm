@@ -25,6 +25,8 @@ spec:
       env:
       - name: DBTYPE
         value: sqlite
+      - name: DBNAME
+        value: data/tasmobackup
       dnsConfig:
         options:
         - name: ndots
