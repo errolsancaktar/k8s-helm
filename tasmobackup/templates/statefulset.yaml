@@ -23,10 +23,10 @@ spec:
         - mountPath: /data
           name: {{ .Values.appName }}-volume
       env:
-      - name: DBTYPE
-        value: sqlite
-      - name: DBNAME
-        value: data/tasmobackup
+        - name: DBTYPE
+          value: sqlite
+        - name: DBNAME
+          value: "data/tasmobackup"
       dnsConfig:
         options:
         - name: ndots
