@@ -1,0 +1,12 @@
+---
+## Tasmo Admin Values ##
+
+appName: tasmoadmin
+storageClass: mayastor
+storageSize: 30Gi
+ingressClass: nginx
+igressHostName: tasmoadmin.sancaktar.net
+namespace: default
+image:
+  name: ghcr.io/tasmoadmin/tasmoadmin
+  tag: latest
