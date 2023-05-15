@@ -1,0 +1,12 @@
+---
+## Tasmo Admin Values ##
+
+appName: tasmobackup
+storageClass: mayastor
+storageSize: 30Gi
+ingressClass: nginx
+igressHostName: tasmobackup.sancaktar.net
+namespace: default
+image:
+  name: danmed/tasmobackupv1
+  tag: latest
