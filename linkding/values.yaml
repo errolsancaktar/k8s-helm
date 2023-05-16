@@ -1,0 +1,15 @@
+---
+## Tasmo Admin Values ##
+
+appName: linkding
+storageClass: mayastor
+storageSize: 30Gi
+ingressClass: nginx
+ingressHostName: links.sancaktar.net
+ingressProtocol: "https://"
+debug: 'true'
+namespace: default
+image:
+  name: sissbruecker/linkding
+  tag: latest
+containerPort: 9090

@@ -17,20 +17,15 @@ spec:
       containers:
       - name: {{ .Values.appName }}
         image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
-        ports:
-        - containerPort: 80
-          name: www
-        - containerPort: 9000
-          protocol: TCP
-          name: fpm
-        volumeMounts:
-        - mountPath: /var/www/html/data
-          name: {{ .Values.appName }}-volume
         env:
-        - name: DBTYPE
-          value: sqlite
-        - name: DBNAME
-          value: "data/tasmobackup"
+        - name: LD_CSRF_TRUSTED_ORIGINS
+          value: "{{ .Values.ingressProtocol }}{{ .Values.ingressHostName }}"
+        ports:
+        - containerPort: {{ .Values.containerPort }}
+          name: www
+        volumeMounts:
+        - mountPath: /etc/linkding/data
+          name: {{ .Values.appName }}-volume
       dnsConfig:
         options:
         - name: ndots

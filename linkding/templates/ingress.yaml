@@ -6,10 +6,6 @@ metadata:
   namespace: {{ .Values.namespace }}
   annotations:
     kubernetes.io/ingress.class: {{ .Values.ingressClass }}
-    nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
-    nginx.ingress.kubernetes.io/server-snippet: "keepalive_timeout 3600s;client_body_timeout 3600s;client_header_timeout 3600s;"
 spec:
   rules:
   - host: {{ .Values.ingressHostName }}
@@ -21,4 +17,4 @@ spec:
           service:
             name: {{ .Values.appName }}-service    
             port:
-              number: 80
+              number: {{ .Values.containerPort }}

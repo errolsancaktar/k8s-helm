@@ -5,8 +5,8 @@ appName: tasmobackup
 storageClass: mayastor
 storageSize: 30Gi
 ingressClass: nginx
-igressHostName: tasmota.sancaktar.net
+ingressHostName: tasmota.sancaktar.net
 namespace: default
 image:
-  name: ghcr.io/errolsancaktar/tasmobackup:latest
+  name: ghcr.io/errolsancaktar/tasmobackup
   tag: latest
