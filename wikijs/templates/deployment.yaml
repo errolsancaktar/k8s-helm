@@ -73,7 +73,7 @@ spec:
       dnsConfig:
         options:
         - name: ndots
-          value: {{ .Values.ndots }}
+          value: "{{ .Values.ndots }}"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
