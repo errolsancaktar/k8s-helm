@@ -38,7 +38,7 @@ securityContext: {}
 env_enabled: true
 db_pass: ""
 
-ndots: "2"
+ndots: 2
 
 env:
 - name: "TZ"
