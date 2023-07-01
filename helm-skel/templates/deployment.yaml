@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "wikijs.fullname" . }}
+  name: {{ include "helm-skel.fullname" . }}
   labels:
-    {{- include "wikijs.labels" . | nindent 4 }}
+    {{- include "helm-skel.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "wikijs.selectorLabels" . | nindent 6 }}
+      {{- include "helm-skel.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "wikijs.selectorLabels" . | nindent 8 }}
+        {{- include "helm-skel.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "wikijs.serviceAccountName" . }}
+      serviceAccountName: {{ include "helm-skel.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -33,17 +33,6 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.env_enabled }}
-          env:
-          {{- range $k,$v := .Values.env }}
-          - name: "{{ $v.name }}"
-            value: "{{ $v.value }}"     
-          {{- end }}
-          {{- if .Values.db_pass }}
-          - name: "DB_PASS"
-            value: "{{ .Values.db_pass }}"     
-          {{- end }}
-          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -58,22 +47,6 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          volumeMounts:
-          {{- range $k, $v := .Values.mountPath }}
-          - mountPath: "{{ $v.mountPath }}"
-            name: "{{ $v.name }}"
-          {{- end }}
-      volumes:
-      {{- range $k, $v := .Values.volumes }}
-      - name: "{{ $v.name }}"
-        nfs:
-          server: "{{ $v.server }}"
-          path: "{{ $v.path }}"
-      {{- end }}
-      dnsConfig:
-        options:
-        - name: ndots
-          value: {{ .Values.ndots }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
