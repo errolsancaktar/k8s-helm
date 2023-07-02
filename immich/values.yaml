@@ -55,10 +55,10 @@ immich:
     persistence:
       tsdata:
         # Enabling typesense persistence is recommended to avoid slow reindexing
-        enabled: false
+        enabled: true
         accessMode: ReadWriteOnce
         size: 1Gi
-        # storageClass: storage-class
+        storageClass: mayastor
     image:
       repository: docker.io/typesense/typesense
       tag: 0.24.0
@@ -81,9 +81,9 @@ immich:
         enabled: true
         size: 1Gi
         # Optional: Set this to pvc to avoid downloading the geodata every start.
-        type: emptyDir
+        type: pvc
         accessMode: ReadWriteMany
-        # storageClass: your-class
+        storageClass: mayastor
     image:
       repository: ghcr.io/immich-app/immich-server
       pullPolicy: IfNotPresent
@@ -100,9 +100,9 @@ immich:
         enabled: true
         size: 10Gi
         # Optional: Set this to pvc to avoid downloading the ML models every start.
-        type: emptyDir
+        type: pvc
         accessMode: ReadWriteMany
-        # storageClass: your-class
+        storageClass: mayastor
 
   web:
     enabled: true
