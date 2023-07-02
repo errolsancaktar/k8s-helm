@@ -90,6 +90,10 @@ immich:
     image:
       repository: ghcr.io/immich-app/immich-server
       pullPolicy: IfNotPresent
+    dnsConfig:
+      options:
+        - name: ndots
+          value: "2"
 
   machine-learning:
     enabled: true
