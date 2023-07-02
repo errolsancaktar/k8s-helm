@@ -46,6 +46,9 @@ immich:
     architecture: standalone
     auth:
       enabled: false
+    persistence:
+      storageClass: mayastor
+      accessMode: ReadWriteOnce
 
   typesense:
     enabled: false
