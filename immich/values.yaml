@@ -49,6 +49,7 @@ immich:
     persistence:
       storageClass: mayastor
       accessMode: ReadWriteOnce
+      medium: pvc
 
   typesense:
     enabled: false
