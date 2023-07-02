@@ -38,7 +38,7 @@ immich:
         auth:
           username: immich
           database: immich
-          password: ""
+          password: "bBAd5AGfdR&YwZB95&475e8UJj&$C&3nBTJUwWrMB^5J"
           hostname: postgres-service
 
   redis:
@@ -46,10 +46,9 @@ immich:
     architecture: standalone
     auth:
       enabled: false
-    persistence:
+    global:
       storageClass: mayastor
-      accessMode: ReadWriteOnce
-      medium: pvc
+
 
   typesense:
     enabled: false
