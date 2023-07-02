@@ -82,7 +82,7 @@ immich:
         size: 1Gi
         # Optional: Set this to pvc to avoid downloading the geodata every start.
         type: pvc
-        accessMode: ReadWriteMany
+        accessMode: ReadWriteOnce
         storageClass: mayastor
     image:
       repository: ghcr.io/immich-app/immich-server
@@ -101,7 +101,7 @@ immich:
         size: 10Gi
         # Optional: Set this to pvc to avoid downloading the ML models every start.
         type: pvc
-        accessMode: ReadWriteMany
+        accessMode: ReadWriteOnce
         storageClass: mayastor
 
   web:
