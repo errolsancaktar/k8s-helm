@@ -6,11 +6,11 @@
 immich:
   env:
     REDIS_HOSTNAME: '{{ printf "%s-redis-master" .Release.Name }}'
-    DB_HOSTNAME: "postgres-service"
-    DB_USERNAME: "immich"
-    DB_DATABASE_NAME: "immich"
+    DB_HOSTNAME: "{{ .Values.postgresql.global.postgresql.auth.hostname }}"
+    DB_USERNAME: "{{ .Values.postgresql.global.postgresql.auth.username }}"
+    DB_DATABASE_NAME: "{{ .Values.postgresql.global.postgresql.auth.database }}"
     # -- You should provide your own secret outside of this helm-chart and use `postgresql.global.postgresql.auth.existingSecret` to provide credentials to the postgresql instance
-    DB_PASSWORD: ""
+    DB_PASSWORD: "immich-server-5f4c4556fb-6ggvl"
     TYPESENSE_ENABLED: "{{ .Values.typesense.enabled }}"
     TYPESENSE_API_KEY: "{{ .Values.typesense.env.TYPESENSE_API_KEY }}"
     TYPESENSE_HOST: '{{ printf "%s-typesense" .Release.Name }}'
@@ -38,7 +38,8 @@ immich:
         auth:
           username: immich
           database: immich
-          password: immich
+          password: bBAd5AGfdR&YwZB95&475e8UJj&$C&3nBTJUwWrMB^5J
+          hostname: postgres-service
 
   redis:
     enabled: true
