@@ -115,6 +115,11 @@ immich:
         type: pvc
         accessMode: ReadWriteOnce
         storageClass: mayastor
+    dnsConfig:
+      options:
+        - name: ndots
+          value: "2"
+
 
   web:
     enabled: true
