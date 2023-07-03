@@ -51,7 +51,7 @@ immich:
 
 
   typesense:
-    enabled: false
+    enabled: true
     env:
       TYPESENSE_DATA_DIR: /tsdata
       TYPESENSE_API_KEY: typesense
