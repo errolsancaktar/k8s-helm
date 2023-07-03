@@ -119,6 +119,13 @@ immich:
       options:
         - name: ndots
           value: "2"
+    resources:
+      requests:
+        cpu: "350m"
+        memory: "1Gi"
+      limits:
+        cpu: "2"
+        memory: "4Gi"
 
 
   web:
